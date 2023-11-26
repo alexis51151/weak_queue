@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/ms_queue_strong.dir/main.cpp.o -o ms_queue_strong  -latomic 
