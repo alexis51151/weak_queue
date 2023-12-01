@@ -12,7 +12,7 @@
 
 // Test queue initialization
 void test_init() {
-    MSQueue<int> queue;
+    MSQueue<int, 1> queue;
     Node<int>* head = queue.head;
     Node<int>* tail = queue.tail;
 
@@ -22,7 +22,7 @@ void test_init() {
 
 //  Test enqueue
 void test_enqueue() {
-    MSQueue<int> queue;
+    MSQueue<int, 1> queue;
     queue.enqueue(5);
     queue.enqueue(7);
     queue.enqueue(8);
@@ -31,7 +31,7 @@ void test_enqueue() {
 // Test enqueue then dequeue
 void test_FIFO_1() {
     cout << "### Begin Test: test_FIFO_1 ###" << endl;
-    MSQueue<int> queue;
+    MSQueue<int, 1> queue;
     queue.enqueue(5);
     queue.enqueue(7);
     queue.enqueue(8);
@@ -48,7 +48,7 @@ void test_FIFO_1() {
 // Test enqueue then dequeue
 void test_FIFO_2() {
     cout << "### Begin Test: test_FIFO_2 ###" << endl;
-    MSQueue<int> queue;
+    MSQueue<int, 1> queue;
     int val = -1;
     queue.enqueue(5);
     queue.dequeue(&val);
@@ -65,7 +65,7 @@ void test_FIFO_2() {
 // Test enqueue then dequeue 1 more time than dequeue
 void test_FIFO_3() {
     cout << "### Begin Test: test_FIFO_3 ###" << endl;
-    MSQueue<int> queue;
+    MSQueue<int, 1> queue;
     int val = -1;
     queue.enqueue(5);
     queue.dequeue(&val);
@@ -83,7 +83,7 @@ void test_FIFO_3() {
 // Enqueue and then dequeue 1M items
 void test_FIFO_1M() {
     cout << "### Begin Test: test_FIFO_1M ###" << endl;
-    MSQueue<int> queue;
+    MSQueue<int, 1> queue;
     int val = -1;
     cout << "Start enqueuing..." << endl;
     for (int i = 0; i < 1e6; i++) {

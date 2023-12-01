@@ -52,14 +52,23 @@ template<class T, int N, int K>
 class HazardRec {
 public:
     // Each thread has its own version of the hazard pointer
-    atomic<T*> hp[N][K] = {nullptr};
-    int threshold = 5;
+    atomic<T*> hp[N][K];
+    int threshold;
 
-    void retire_node(T* node, vector<T*>& free_list) {
+    HazardRec() {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < K; j++) {
+                hp[i][j].store(nullptr);
+            }
+        }
+        threshold = 5;
+    }
+
+    void retire_node(T* node, int tid, vector<T*>& free_list) {
         // retire the node (to be freed)
         free_list.push_back(node);
         if (free_list.size() >= threshold) {
-            this->scan();
+            this->scan(tid, free_list);
         }
     }
 
@@ -69,8 +78,8 @@ public:
         // Look at the other threads versions of the hazard pointers
         for (int i = 0; i < N; i++) {
             if (i != tid) {
-                for (atomic<T*> hptr : hp[i]) {
-                    T* ptr = hptr.load();
+                for (int j = 0; j < K; j++) {
+                    T* ptr = hp[i][j].load();
                     if (ptr != nullptr) {
                         ptr_list.push_back(ptr);
                     }
@@ -81,9 +90,10 @@ public:
         // Search if you can free any node from free_list
         vector<T*> new_free_list;
         // Sort the free_list
-        sort(free_list);
+        sort(free_list.begin(), free_list.end());
         while (!free_list.empty()) {
-            T* node = free_list.pop_back();
+            T* node = free_list.back();
+            free_list.pop_back();
             // Another thread still has a copy
             if (binary_search(free_list.begin(), free_list.end(), node)) {
                 new_free_list.push_back(node);

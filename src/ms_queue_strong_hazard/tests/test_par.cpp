@@ -13,13 +13,16 @@
  * Parallel testing
  */
 
+thread_local vector<Node<int>*> free_list;
+
 // sequential enqueue
-vector<int> enqueue_dequeue_n(MSQueue<int>& queue, int tid, int n_threads, int n, vector<int>& output) {
+template<int NTHREADS>
+vector<int> enqueue_dequeue_n(MSQueue<int, NTHREADS>& queue, int tid, int n, vector<int>& output) {
     // Enqueuing
-    int n_elements = n / n_threads;
+    int n_elements = n / NTHREADS;
     int offset = n_elements * tid;
     for (int i = 0; i < n_elements; i++) {
-        queue.enqueue(offset + i);
+        queue.enqueue(offset + i, tid);
         cout << "[" << tid << "]: enqueued " << offset + i << endl;
     }
     // Dequeuing
@@ -28,7 +31,7 @@ vector<int> enqueue_dequeue_n(MSQueue<int>& queue, int tid, int n_threads, int n
         // Blocking dequeue
         while (val == -1) {
             cout << "[" << tid << "]: enqueued " << i << endl;
-            queue.dequeue(&val);
+            queue.dequeue(&val, tid, free_list);
         }
         cout << "[" << tid << "]: dequeued " << i << endl;
         assert(val < n);
@@ -39,18 +42,19 @@ vector<int> enqueue_dequeue_n(MSQueue<int>& queue, int tid, int n_threads, int n
 
 
 // Enqueue and then dequeue 1M items
-void test_FIFO_par(int n_threads, int n) {
+template<int NTHREADS>
+void test_FIFO_par(int n) {
     cout << "### Begin Test: test_FIFO_1M ###" << endl;
-    MSQueue<int> queue;
+    MSQueue<int, NTHREADS> queue;
     // Invoke the threads
     vector<thread> threads;
-    vector<vector<int>> res(n_threads, vector<int>());
-    for (int i = 0; i < n_threads; i++) {
-        thread t = thread(enqueue_dequeue_n, ref(queue), i, n_threads, n, ref(res[i]));
+    vector<vector<int>> res(NTHREADS, vector<int>());
+    for (int i = 0; i < NTHREADS; i++) {
+        thread t = thread(enqueue_dequeue_n<NTHREADS>, ref(queue), i, n, ref(res[i]));
         threads.push_back(move(t));
     }
     // Join the threads
-    cout << "nthreads = " << n_threads << endl;
+    cout << "nthreads = " << NTHREADS << endl;
     for (thread& t : threads) {
         t.join();
     }
@@ -73,7 +77,7 @@ void test_FIFO_par(int n_threads, int n) {
 
 int main() {
     // Run some parallel tests
-    test_FIFO_par(10, 1e6);
+    test_FIFO_par<2>(1000);
     cout << "Finished parallel testing" << endl;
     return 0;
 }
