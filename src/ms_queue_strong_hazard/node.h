@@ -6,7 +6,6 @@
 #define COMP_522_NODE_H
 
 #include <atomic>
-#include "pointer.h"
 
 using namespace std;
 
@@ -14,10 +13,10 @@ template<class T>
 class Node {
 public:
     T value;
-    atomic<Pointer<T>> next;
+    atomic<Node<T>*> next;
 
     Node() {
-        next.store(Pointer<T>());
+        next.store(nullptr);
     }
 
     // Create node with no successor
