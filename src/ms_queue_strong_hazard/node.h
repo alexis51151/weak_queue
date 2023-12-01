@@ -24,9 +24,9 @@ public:
         value = val;
     }
 
-    bool operator<(const Node& other) {
-        return this.value < other.value;
-    }
+//    bool operator<(const Node& other) {
+//        return this.value < other.value;
+//    }
 };
 
 #endif //COMP_522_NODE_H

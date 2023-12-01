@@ -77,7 +77,7 @@ void test_FIFO_par(int n) {
 
 int main() {
     // Run some parallel tests
-    test_FIFO_par<2>(1000);
+    test_FIFO_par<2>(1e5);
     cout << "Finished parallel testing" << endl;
     return 0;
 }

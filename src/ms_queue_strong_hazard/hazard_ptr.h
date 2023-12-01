@@ -15,33 +15,6 @@
 
 using namespace std;
 
-//template <typename T>
-//int binarySearch(const std::vector<T>& arr, T target) {
-//    int left = 0;
-//    int right = arr.size() - 1;
-//
-//    while (left <= right) {
-//        int mid = left + (right - left) / 2;
-//
-//        // Check if the target is present at the middle
-//        if (arr[mid] == target) {
-//            return mid;
-//        }
-//
-//        // If the target is greater, ignore the left half
-//        if (arr[mid] < target) {
-//            left = mid + 1;
-//        }
-//            // If the target is smaller, ignore the right half
-//        else {
-//            right = mid - 1;
-//        }
-//    }
-//
-//    // If the target is not present in the array
-//    return -1;
-//}
-
 // Simplified Hazard Pointer implementation
 // when you need K hazard ptr record.
 // Number of threads is fixed.
@@ -77,32 +50,34 @@ public:
         vector<T*> ptr_list;
         // Look at the other threads versions of the hazard pointers
         for (int i = 0; i < N; i++) {
-            if (i != tid) {
-                for (int j = 0; j < K; j++) {
-                    T* ptr = hp[i][j].load();
-                    if (ptr != nullptr) {
-                        ptr_list.push_back(ptr);
-                    }
+            for (int j = 0; j < K; j++) {
+                T* ptr = hp[i][j].load();
+                if (ptr != nullptr) {
+                    ptr_list.push_back(ptr);
                 }
             }
         }
 
         // Search if you can free any node from free_list
         vector<T*> new_free_list;
-        // Sort the free_list
-        sort(free_list.begin(), free_list.end());
+        // Sort the ptr_list (for binary search)
+        sort(ptr_list.begin(), ptr_list.end(), [](T* a, T*b) { return a < b; });
         while (!free_list.empty()) {
             T* node = free_list.back();
             free_list.pop_back();
             // Another thread still has a copy
-            if (binary_search(free_list.begin(), free_list.end(), node)) {
+            if (binary_search(ptr_list.begin(), ptr_list.end(), node, [](T* a, T*b) { return a < b; })) {
                 new_free_list.push_back(node);
             }
             // No other thread has a copy
             else {
+                cout << "Freed node " << node->value << endl;
                 delete node;
             }
         }
+
+        // Update the free list
+        free_list = new_free_list;
     }
 };
 #endif //COMP_522_HAZARD_PTR_H
