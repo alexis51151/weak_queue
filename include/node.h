@@ -17,7 +17,7 @@ public:
     atomic<Pointer<T>> next;
 
     Node() {
-        next = Pointer<T>();
+        next.store(Pointer<T>());
     }
 
     // Create node with no successor

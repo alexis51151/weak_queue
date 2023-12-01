@@ -16,7 +16,7 @@ template<class T>
 class Pointer {
 public:
     Node<T>* ptr;
-    uint64_t count; // counter for the ABA problem
+    uint32_t count; // counter for the ABA problem
 
     // Default constructor: only called for the fake node
     Pointer() {
