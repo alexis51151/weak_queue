@@ -27,7 +27,7 @@ public:
         this->tail.store(fake);
     }
 
-    void enqueue(unsigned int value) {
+    void enqueue(uint32_t value) {
         // Create a new node
         Node* node = new Node(value);
         Node* cur_tail;
@@ -56,7 +56,7 @@ public:
         this->tail.compare_exchange_strong(cur_tail, node);
     }
 
-    bool dequeue(unsigned int* value) {
+    bool dequeue(uint32_t* value) {
         Node* cur_head;
         while (true) {
             cur_head = this->head.load();

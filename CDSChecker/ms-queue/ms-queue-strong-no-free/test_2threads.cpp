@@ -34,7 +34,8 @@ static void main_task(void* args) {
 
 #define NTHREADS 2
 int user_main(int argc, char **argv) {
-	unsigned int in_sum = 0, out_sum = 0;
+	uint32_t in_sum = 0;
+    uint32_t out_sum = 0;
     bool succ1, succ2;
 
 	MSQueue queue;
