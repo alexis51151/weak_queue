@@ -43,9 +43,11 @@
 
 We have implemented the following data structures:
 * MS Queue for Strong Memory Model (x86)
+* MS Queue for Weak Memory Model (POWER9, Apple Silicon, ARM, etc)
 
 We have model checked using CDSChecker:
 * MS Queue for Strong Memory Model (x86) w/o freeing memory
+* MS Queue for Weak Memory Model (POWER9, Apple Silicon, ARM, etc) w/o freeing memory
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
