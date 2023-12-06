@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <threads.h>
 
-#include "ms_queue_strong.h"
+#include "ms_queue_weak.h"
 #include "model-assert.h"
 
 struct args {
