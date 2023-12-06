@@ -5,7 +5,7 @@
 #ifndef COMP_522_NODE_H
 #define COMP_522_NODE_H
 
-#include "atomic"
+#include <atomic>
 #include "pointer.h"
 
 using namespace std;

@@ -5,10 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_executable(test_seq tests/test_seq.cpp)
 add_executable(test_par tests/test_par.cpp)
-add_executable(test_cds tests/test_cds.cpp)
 
 
 target_link_libraries(test_seq PUBLIC -latomic)
 target_link_libraries(test_par PUBLIC -latomic)
-
-target_include_directories(test_cds PUBLIC ../../include)

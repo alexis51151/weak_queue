@@ -11,7 +11,7 @@
 
 #include "node.h"
 #include "pointer.h"
-#include "atomic"
+#include <atomic>
 
 template<class T>
 class MSQueue {
