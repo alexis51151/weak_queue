@@ -46,21 +46,21 @@ public:
                 // Is the tail lagging behind?
                 if (next == NULL) {
                     // Try to insert the node
-                    if (cur_tail->next.compare_exchange_strong(next, node, memory_order_release, memory_order_release)) {
+                    if (cur_tail->next.compare_exchange_strong(next, node, memory_order_release, memory_order_relaxed)) {
                         // New node successfully added
                         break;
                     }
                 } else {
                     // Try to update the tail, and try again to insert later
                     // If it fails, someone else has updated the tail
-                    this->tail.compare_exchange_strong(cur_tail, next, memory_order_release, memory_order_release);
+                    this->tail.compare_exchange_strong(cur_tail, next, memory_order_release, memory_order_relaxed);
                 }
             }
         }
         // Try to update the tail
         // If it fails, someone else has updated the tail
         // Release: last instruction, so we just do not want it to be reordered before another instruction
-        this->tail.compare_exchange_strong(cur_tail, node, memory_order_release, memory_order_release);
+        this->tail.compare_exchange_strong(cur_tail, node, memory_order_release, memory_order_relaxed);
     }
 
     bool dequeue(uint32_t* value) {
@@ -78,13 +78,13 @@ public:
                         return false;
                     }
                     // Tail is lagging behind
-                    this->tail.compare_exchange_strong(cur_tail, next, memory_order_release, memory_order_release);
+                    this->tail.compare_exchange_strong(cur_tail, next, memory_order_release, memory_order_relaxed);
                 } else {
                     // Queue is not empty
                     // Read value before CAS to prevent another dequeue from freeing the same node
                     *value = next->value;
                     // Try to update head to next node
-                    if (this->head.compare_exchange_strong(cur_head, next, memory_order_release, memory_order_release)) {
+                    if (this->head.compare_exchange_strong(cur_head, next, memory_order_release, memory_order_relaxed)) {
                         // Dequeue successful
                         break;
                     }
