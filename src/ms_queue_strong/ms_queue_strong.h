@@ -60,7 +60,7 @@ public:
     }
 
     bool dequeue(T *value) {
-        Pointer<T> cur_head;
+        Pointer<T> cur_head(nullptr, 0);
         while (true) {
             cur_head = this->head.load();
             Pointer<T> cur_tail = this->tail.load();
