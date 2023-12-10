@@ -2,19 +2,19 @@
 
 # Script to run the experiments
 n_cores=$(nproc --all) # Get the number of cores on the machine
-n_trials=5
+n_trials=2
 
 echo Detected "$n_cores" cores
 
 
 # 1. 10M operations, from 1 to n_cores
-n_iter=100
+n_iter=1000
 n_enqueue_dequeue=10000000
 
 # Print header
 printf "#1: memory_model\tn_threads\tn_iter\tn\tdur_ms\ttot_dur_work_ms\n"
 
-for ((i = 1; i <= n_cores; i++))
+for ((i = 1; i <= n_cores; i+= 10))
 do
   # Do several trials
   for ((j = 1; j <= n_trials; j++))
