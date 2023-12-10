@@ -8,3 +8,5 @@ add_executable(test_par tests/test_par.cpp)
 
 target_link_libraries(test_seq PUBLIC -latomic)
 target_link_libraries(test_par PUBLIC -latomic)
+target_link_libraries(test_seq PUBLIC -lpthread)
+target_link_libraries(test_par PUBLIC -lpthread)

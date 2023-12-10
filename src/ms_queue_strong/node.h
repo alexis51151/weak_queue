@@ -23,8 +23,8 @@ public:
     // Create node with no successor
     explicit Node(const T& val) {
         value = val;
-        atomic_init(&next, Pointer<T>(nullptr, 0));
-//        next.store(Pointer<T>(nullptr, 0));
+//        atomic_init(&next, Pointer<T>(nullptr, 0));
+        next.store(Pointer<T>(nullptr, 0));
     }
 };
 

@@ -18,11 +18,7 @@ public:
     Node<T>* ptr;
     uint32_t count; // counter for the ABA problem
 
-    // Default constructor: only called for the fake node
-    Pointer() {
-        ptr = nullptr;
-        count = 0; // initialize counter
-    }
+    Pointer() = default;
 
     Pointer(Node<T>* new_ptr, uint64_t new_count) {
         ptr = new_ptr;
