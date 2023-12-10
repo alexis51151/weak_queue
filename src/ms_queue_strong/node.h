@@ -23,6 +23,7 @@ public:
     // Create node with no successor
     explicit Node(const T& val) {
         value = val;
+        next.store(Pointer<T>());
     }
 };
 
