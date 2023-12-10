@@ -1,3 +1,4 @@
+
 <div id="top"></div>
 
 
@@ -60,6 +61,15 @@ We have model checked using CDSChecker:
 * CMake
 * CPU with weak memory ordering (ex: POWER9, Apple Silicon, ARM...)
 
+### Compatibility
+The project was successfully compiled and tested on 
+- Intel CPU (i9-12900K) with Ubuntu 22.04
+- Apple Silicon (Apple M1 Pro) with macOS Monterey 12.6
+
+### Apple Silicon 
+On Apple Silicon, linking against the `atomics` library leads to an error. 
+If you are compiling the code for an Apple Silicon CPU, you should remove the linkage
+to `atomics` in the CMakeLists to successfully compile
 
 <!-- USAGE EXAMPLES -->
 ## Testing
