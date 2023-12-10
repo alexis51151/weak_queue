@@ -1,0 +1,354 @@
+Detected 160 cores
+#1: memory_model	n_threads	n_iter	n	dur_ms	tot_dur_work_ms
+n_threads = 1
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.36 ns
+total work duration = 8587.2 ms
+Benchmarking started
+Duration for strong queue = 93876ms
+Duration for weak queue = 94073 ms
+#1: strong	1	1000	10000000	93876.000000	8587.200000
+#1: weak	1	1000	10000000	94073.000000	8587.200000
+Benchmarking ended
+n_threads = 1
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.35 ns
+total work duration = 8587 ms
+Benchmarking started
+Duration for strong queue = 93668ms
+Duration for weak queue = 93366 ms
+#1: strong	1	1000	10000000	93668.000000	8587.000000
+#1: weak	1	1000	10000000	93366.000000	8587.000000
+Benchmarking ended
+n_threads = 11
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.29 ns
+total work duration = 780.526 ms
+Benchmarking started
+Duration for strong queue = 13717ms
+Duration for weak queue = 13562 ms
+#1: strong	11	1000	10000000	13717.000000	780.526492
+#1: weak	11	1000	10000000	13562.000000	780.526492
+Benchmarking ended
+n_threads = 11
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 431.22 ns
+total work duration = 784.036 ms
+Benchmarking started
+Duration for strong queue = 13482ms
+Duration for weak queue = 12996 ms
+#1: strong	11	1000	10000000	13482.000000	784.035580
+#1: weak	11	1000	10000000	12996.000000	784.035580
+Benchmarking ended
+n_threads = 21
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429 ns
+total work duration = 408.571 ms
+Benchmarking started
+Duration for strong queue = 14709ms
+Duration for weak queue = 14577 ms
+#1: strong	21	1000	10000000	14709.000000	408.571020
+#1: weak	21	1000	10000000	14577.000000	408.571020
+Benchmarking ended
+n_threads = 21
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.24 ns
+total work duration = 408.8 ms
+Benchmarking started
+Duration for strong queue = 14639ms
+Duration for weak queue = 15178 ms
+#1: strong	21	1000	10000000	14639.000000	408.799591
+#1: weak	21	1000	10000000	15178.000000	408.799591
+Benchmarking ended
+n_threads = 31
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.13 ns
+total work duration = 276.858 ms
+Benchmarking started
+Duration for strong queue = 12228ms
+Duration for weak queue = 12240 ms
+#1: strong	31	1000	10000000	12228.000000	276.857511
+#1: weak	31	1000	10000000	12240.000000	276.857511
+Benchmarking ended
+n_threads = 31
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.11 ns
+total work duration = 276.845 ms
+Benchmarking started
+Duration for strong queue = 14043ms
+Duration for weak queue = 14125 ms
+#1: strong	31	1000	10000000	14043.000000	276.844608
+#1: weak	31	1000	10000000	14125.000000	276.844608
+Benchmarking ended
+n_threads = 41
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.06 ns
+total work duration = 209.297 ms
+Benchmarking started
+Duration for strong queue = 15688ms
+Duration for weak queue = 15602 ms
+#1: strong	41	1000	10000000	15688.000000	209.297184
+#1: weak	41	1000	10000000	15602.000000	209.297184
+Benchmarking ended
+n_threads = 41
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.48 ns
+total work duration = 209.502 ms
+Benchmarking started
+Duration for strong queue = 15560ms
+Duration for weak queue = 15478 ms
+#1: strong	41	1000	10000000	15560.000000	209.502062
+#1: weak	41	1000	10000000	15478.000000	209.502062
+Benchmarking ended
+n_threads = 51
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 449.12 ns
+total work duration = 176.125 ms
+Benchmarking started
+Duration for strong queue = 15880ms
+Duration for weak queue = 15858 ms
+#1: strong	51	1000	10000000	15880.000000	176.125103
+#1: weak	51	1000	10000000	15858.000000	176.125103
+Benchmarking ended
+n_threads = 51
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 454.83 ns
+total work duration = 178.364 ms
+Benchmarking started
+Duration for strong queue = 15776ms
+Duration for weak queue = 15939 ms
+#1: strong	51	1000	10000000	15776.000000	178.364313
+#1: weak	51	1000	10000000	15939.000000	178.364313
+Benchmarking ended
+n_threads = 61
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 452.86 ns
+total work duration = 148.478 ms
+Benchmarking started
+Duration for strong queue = 15702ms
+Duration for weak queue = 15796 ms
+#1: strong	61	1000	10000000	15702.000000	148.478302
+#1: weak	61	1000	10000000	15796.000000	148.478302
+Benchmarking ended
+n_threads = 61
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.16 ns
+total work duration = 140.708 ms
+Benchmarking started
+Duration for strong queue = 15313ms
+Duration for weak queue = 15632 ms
+#1: strong	61	1000	10000000	15313.000000	140.707831
+#1: weak	61	1000	10000000	15632.000000	140.707831
+Benchmarking ended
+n_threads = 71
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.26 ns
+total work duration = 120.918 ms
+Benchmarking started
+Duration for strong queue = 15993ms
+Duration for weak queue = 15968 ms
+#1: strong	71	1000	10000000	15993.000000	120.918249
+#1: weak	71	1000	10000000	15968.000000	120.918249
+Benchmarking ended
+n_threads = 71
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 430.21 ns
+total work duration = 121.186 ms
+Benchmarking started
+Duration for strong queue = 16201ms
+Duration for weak queue = 15462 ms
+#1: strong	71	1000	10000000	16201.000000	121.185855
+#1: weak	71	1000	10000000	15462.000000	121.185855
+Benchmarking ended
+n_threads = 81
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 476.25 ns
+total work duration = 117.592 ms
+Benchmarking started
+Duration for strong queue = 17231ms
+Duration for weak queue = 15812 ms
+#1: strong	81	1000	10000000	17231.000000	117.591840
+#1: weak	81	1000	10000000	15812.000000	117.591840
+Benchmarking ended
+n_threads = 81
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.17 ns
+total work duration = 105.967 ms
+Benchmarking started
+Duration for strong queue = 16185ms
+Duration for weak queue = 16186 ms
+#1: strong	81	1000	10000000	16185.000000	105.967223
+#1: weak	81	1000	10000000	16186.000000	105.967223
+Benchmarking ended
+n_threads = 91
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.55 ns
+total work duration = 94.4065 ms
+Benchmarking started
+Duration for strong queue = 16480ms
+Duration for weak queue = 15928 ms
+#1: strong	91	1000	10000000	16480.000000	94.406499
+#1: weak	91	1000	10000000	15928.000000	94.406499
+Benchmarking ended
+n_threads = 91
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 430.42 ns
+total work duration = 94.5977 ms
+Benchmarking started
+Duration for strong queue = 16393ms
+Duration for weak queue = 15954 ms
+#1: strong	91	1000	10000000	16393.000000	94.597708
+#1: weak	91	1000	10000000	15954.000000	94.597708
+Benchmarking ended
+n_threads = 101
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.5 ns
+total work duration = 85.0487 ms
+Benchmarking started
+Duration for strong queue = 12499ms
+Duration for weak queue = 12677 ms
+#1: strong	101	1000	10000000	12499.000000	85.048731
+#1: weak	101	1000	10000000	12677.000000	85.048731
+Benchmarking ended
+n_threads = 101
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429 ns
+total work duration = 84.9497 ms
+Benchmarking started
+Duration for strong queue = 17331ms
+Duration for weak queue = 16279 ms
+#1: strong	101	1000	10000000	17331.000000	84.949722
+#1: weak	101	1000	10000000	16279.000000	84.949722
+Benchmarking ended
+n_threads = 111
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.52 ns
+total work duration = 77.3909 ms
+Benchmarking started
+Duration for strong queue = 18493ms
+Duration for weak queue = 16967 ms
+#1: strong	111	1000	10000000	18493.000000	77.390914
+#1: weak	111	1000	10000000	16967.000000	77.390914
+Benchmarking ended
+n_threads = 111
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 428.99 ns
+total work duration = 77.2954 ms
+Benchmarking started
+Duration for strong queue = 18346ms
+Duration for weak queue = 18159 ms
+#1: strong	111	1000	10000000	18346.000000	77.295418
+#1: weak	111	1000	10000000	18159.000000	77.295418
+Benchmarking ended
+n_threads = 121
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.72 ns
+total work duration = 71.0276 ms
+Benchmarking started
+Duration for strong queue = 18765ms
+Duration for weak queue = 18449 ms
+#1: strong	121	1000	10000000	18765.000000	71.027559
+#1: weak	121	1000	10000000	18449.000000	71.027559
+Benchmarking ended
+n_threads = 121
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.15 ns
+total work duration = 70.9333 ms
+Benchmarking started
+Duration for strong queue = 18977ms
+Duration for weak queue = 18030 ms
+#1: strong	121	1000	10000000	18977.000000	70.933345
+#1: weak	121	1000	10000000	18030.000000	70.933345
+Benchmarking ended
+n_threads = 131
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 428.98 ns
+total work duration = 65.4924 ms
+Benchmarking started
+Duration for strong queue = 19123ms
+Duration for weak queue = 18801 ms
+#1: strong	131	1000	10000000	19123.000000	65.492377
+#1: weak	131	1000	10000000	18801.000000	65.492377
+Benchmarking ended
+n_threads = 131
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.1 ns
+total work duration = 65.5107 ms
+Benchmarking started
+Duration for strong queue = 18824ms
+Duration for weak queue = 18667 ms
+#1: strong	131	1000	10000000	18824.000000	65.510697
+#1: weak	131	1000	10000000	18667.000000	65.510697
+Benchmarking ended
+n_threads = 141
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.05 ns
+total work duration = 60.8573 ms
+Benchmarking started
+Duration for strong queue = 19271ms
+Duration for weak queue = 18770 ms
+#1: strong	141	1000	10000000	19271.000000	60.857310
+#1: weak	141	1000	10000000	18770.000000	60.857310
+Benchmarking ended
+n_threads = 141
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.05 ns
+total work duration = 60.8573 ms
+Benchmarking started
+Duration for strong queue = 19400ms
+Duration for weak queue = 19005 ms
+#1: strong	141	1000	10000000	19400.000000	60.857310
+#1: weak	141	1000	10000000	19005.000000	60.857310
+Benchmarking ended
+n_threads = 151
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.28 ns
+total work duration = 56.8581 ms
+Benchmarking started
+Duration for strong queue = 20224ms
+Duration for weak queue = 19535 ms
+#1: strong	151	1000	10000000	20224.000000	56.858136
+#1: weak	151	1000	10000000	19535.000000	56.858136
+Benchmarking ended
+n_threads = 151
+n_iter = 1000
+number of enqueue/dequeue = 10000000
+work duration = 429.21 ns
+total work duration = 56.8489 ms
+Benchmarking started
+Duration for strong queue = 17412ms
+Duration for weak queue = 17350 ms
+#1: strong	151	1000	10000000	17412.000000	56.848864
+#1: weak	151	1000	10000000	17350.000000	56.848864
+Benchmarking ended
