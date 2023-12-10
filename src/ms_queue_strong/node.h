@@ -16,14 +16,13 @@ public:
     T value;
     atomic<Pointer<T>> next;
 
-//    Node() {
-//        next.store(Pointer<T>(nullptr, 0));
-//    }
+    Node() {
+        next.store(Pointer<T>(nullptr, 0));
+    }
 
     // Create node with no successor
     explicit Node(const T& val) {
         value = val;
-//        atomic_init(&next, Pointer<T>(nullptr, 0));
         next.store(Pointer<T>(nullptr, 0));
     }
 };

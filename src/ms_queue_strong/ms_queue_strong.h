@@ -22,10 +22,8 @@ public:
 
     explicit MSQueueStrong() {
         // Create the initial node: fake node
-        Node<T>* fake = new Node<T>(0);
+        Node<T>* fake = new Node<T>();
         // This node has no successor
-//        atomic_init(&head, Pointer<T>(fake, 0));
-//        atomic_init(&tail, Pointer<T>(fake, 0));
         this->head.store(Pointer<T>(fake, 0));
         this->tail.store(Pointer<T>(fake, 0));
     }
