@@ -20,10 +20,12 @@ public:
     atomic<Pointer<T>> head;
     atomic<Pointer<T>> tail;
 
-    MSQueueStrong() {
+    explicit MSQueueStrong() {
         // Create the initial node: fake node
         Node<T>* fake = new Node<T>();
         // This node has no successor
+//        atomic_init(Pointer<T>(fake, 0));
+//        atomic_init(Pointer<T>(fake, 0));
         this->head.store(Pointer<T>(fake, 0));
         this->tail.store(Pointer<T>(fake, 0));
     }
@@ -31,7 +33,7 @@ public:
     void enqueue(const T &value) {
         // Create a new node
         Node<T>* node = new Node<T>(value);
-        Pointer<T> cur_tail;
+        Pointer<T> cur_tail(nullptr, 0);
         while (true) {
             // Retrieve the current tail and last inserted node
             cur_tail = this->tail.load();
