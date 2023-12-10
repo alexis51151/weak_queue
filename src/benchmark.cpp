@@ -86,11 +86,13 @@ int main(int argc, char* argv[]) {
     int n_threads = atoi(argv[1]); // 10
     int n_iter = atoi(argv[2]); // 10000
     int n = atoi(argv[3]); // 10000000
-    int n_per_thread = n / n_threads;
 
     if (n_threads == 0) {
         exit(0);
     }
+
+    int n_per_thread = n / n_threads;
+
 
     // Print the arguments
     cout << "n_threads = " << n_threads << endl;

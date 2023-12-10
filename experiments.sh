@@ -2,14 +2,17 @@
 
 # Script to run the experiments
 n_cores=$(nproc --all) # Get the number of cores on the machine
-n_trials=5
 
 echo Detected "$n_cores" cores
 
+if [ $# -ne  4 ]
+then
+  echo "Usage: ./experiments.sh n_iter n_enqueue_dequeue n_trials"
+fi
 
-# 1. 10M operations, from 1 to n_cores
-n_iter=100
-n_enqueue_dequeue=1000000
+n_iter=$1
+n_enqueue_dequeue=$2
+n_trials=$3
 
 # Print header
 printf "#1: memory_model\tn_threads\tn_iter\tn\tdur_ms\ttot_dur_work_ms\n"
