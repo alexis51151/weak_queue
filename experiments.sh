@@ -2,7 +2,7 @@
 
 # Script to run the experiments
 n_cores=$(nproc --all) # Get the number of cores on the machine
-n_trials=2
+n_trials=5
 
 echo Detected "$n_cores" cores
 
