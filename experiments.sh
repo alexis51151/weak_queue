@@ -8,13 +8,13 @@ echo Detected "$n_cores" cores
 
 
 # 1. 10M operations, from 1 to n_cores
-n_iter=20
-n_enqueue_dequeue=50000000
+n_iter=100
+n_enqueue_dequeue=1000000
 
 # Print header
 printf "#1: memory_model\tn_threads\tn_iter\tn\tdur_ms\ttot_dur_work_ms\n"
 
-for ((i = 0; i <= n_cores; i+= 10))
+for ((i = 0; i <= n_cores; i+= 2))
 do
   # Do several trials
   for ((j = 1; j <= n_trials; j++))
