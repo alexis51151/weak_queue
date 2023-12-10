@@ -69,7 +69,7 @@ The project was successfully compiled and tested on
 ### Apple Silicon 
 On Apple Silicon, linking against the `atomics` library leads to an error. 
 If you are compiling the code for an Apple Silicon CPU, you should remove the linkage
-to `atomics` in the CMakeLists to successfully compile
+to `atomics` in the Makefile to successfully compile.
 
 <!-- USAGE EXAMPLES -->
 ## Testing

@@ -27,10 +27,9 @@ vector<int> enqueue_dequeue_n(MSQueue<int>& queue, int tid, int n_threads, int n
         int val = -1;
         // Blocking dequeue
         while (val == -1) {
-            cout << "[" << tid << "]: enqueued " << i << endl;
             queue.dequeue(&val);
         }
-        cout << "[" << tid << "]: dequeued " << i << endl;
+        cout << "[" << tid << "]: dequeued " << val << endl;
         assert(val < n);
         output.push_back(val);
     }
