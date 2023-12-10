@@ -75,16 +75,23 @@ double measure_work(volatile long n) {
 }
 
 
-int main() {
-    // Parameters
-    int n_threads = 2;
-    int n_iter = 100;
-    int n = 100000000;
-    int n_per_thread = n / n_threads;
-    cout << "Benchmarking started" << endl;
+int main(int argc, char* argv[]) {
 
-    // Print the number of threads
-    cout << "N_THREADS = " << n_threads << endl;
+    if (argc != 4) {
+        printf("Usage: ./bench n_threads n_iter n_enqueue_dequeue\n");
+        exit(-1);
+    }
+
+    // Retrieve parameters
+    int n_threads = atoi(argv[1]); // 10
+    int n_iter = atoi(argv[2]); // 10000
+    int n = atoi(argv[3]); // 10000000
+    int n_per_thread = n / n_threads;
+
+    // Print the arguments
+    cout << "n_threads = " << n_threads << endl;
+    cout << "n_iter = " << n_iter << endl;
+    cout << "number of enqueue/dequeue = " << n << endl;
 
     // Duration of the work (average)
     double dur_work_ns = 0;
@@ -99,13 +106,20 @@ int main() {
     double tot_dur_work_ms = 2 * n_per_thread * dur_work_ns / 1e6;
     cout << "total work duration = " << tot_dur_work_ms << " ms" << endl;
 
+    cout << "Benchmarking started" << endl;
+
     // Strong queue
     double dur_strong_ms = bench<MSQueueStrong<int>>(n_per_thread, n_iter, n_threads);
     cout << "Duration for strong queue = " << dur_strong_ms << "ms" << endl;
 
+
     // Weak queue
     double dur_weak_ms = bench<MSQueue<int>>(n_per_thread, n_iter, n_threads);
     cout << "Duration for weak queue = " << dur_weak_ms << " ms" << endl;
+
+    // Output in tsv format
+    printf("#1: %s\t%d\t%d\t%d\t%f\t%f\n", "strong", n_threads, n_iter, n, dur_strong_ms, tot_dur_work_ms);
+    printf("#1: %s\t%d\t%d\t%d\t%f\t%f\n", "weak", n_threads, n_iter, n, dur_weak_ms, tot_dur_work_ms);
 
     cout << "Benchmarking ended" << endl;
 }
