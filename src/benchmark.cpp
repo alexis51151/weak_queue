@@ -13,15 +13,9 @@
 
 using namespace std;
 
-// Namespace for Strong queue
-namespace strong {
-    #include "ms_queue_strong/ms_queue_strong.h"
-}
+#include "ms_queue_strong/ms_queue_strong.h"
+#include "ms_queue_weak/ms_queue_weak.h"
 
-// Namespace for Weak queue
-namespace weak {
-    #include "ms_queue_weak/ms_queue_weak.h"
-}
 
 // Dummy computation
 template<int N_ITER>
@@ -35,7 +29,7 @@ void work() {
 // Each thread performs M enqueue and N dequeue
 // Q is the type of the queue
 template<class Q, int M, int N, int N_ITER>
-void enqueue_dequeue(Q queue) {
+void enqueue_dequeue(Q& queue) {
     // Enqueuing
     for (int i = 0; i < M; i++) {
         if (N_ITER > 0) {
@@ -60,7 +54,7 @@ double bench() {
     // Dispatch the threads
     auto start = chrono::high_resolution_clock::now(); // Start measuring
     for (int i = 0; i < NTHREADS; i++) {
-        thread t = thread(enqueue_dequeue<Q, M, N, N_ITER>, ref(queue));
+        thread t = thread(enqueue_dequeue<Q, M / NTHREADS, N / NTHREADS, N_ITER>, ref(queue));
         threads.push_back(move(t));
     }
 
@@ -73,20 +67,37 @@ double bench() {
     auto end = chrono::high_resolution_clock::now();
 
     // Compute duration
-    double dur_ms = chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+    double dur_ms = chrono::duration_cast<chrono::milliseconds>(end - start).count();
     return dur_ms;
 }
 
+template<int N_ITER>
+void measure_work() {
+    auto start= chrono::high_resolution_clock::now();
+    work<N_ITER>();
+    auto end = chrono::high_resolution_clock::now();
+    double dur_work_ms = chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+    cout << "work duration = " << dur_work_ms << " ns" << endl;
+}
+
+
+#define N_THREADS 24
 int main() {
     cout << "Benchmarking started" << endl;
 
-    // Strong queue
-    double dur_strong_ms = bench<strong::MSQueue<int>, 1000000, 1000000, 1000, 2>();
-    cout << "Duration for strong queue = " << dur_strong_ms << " ms" << endl;
+    // Print the number of threads
+    cout << "N_THREADS = " << N_THREADS << endl;
 
-//    // Weak queue
-//    double dur_weak_ms = bench<weak::MSQueue<int>, 1000000, 1000000, 1000, 2>();
-//    cout << "Duration for weak queue = " << dur_weak_ms << " ms" << endl;
+    // Duration of the work
+    measure_work<100>();
+
+    // Strong queue
+    double dur_strong_ms = bench<MSQueueStrong<int>, 10000000, 10000000, 100, N_THREADS> ();
+    cout << "Duration for strong queue = " << dur_strong_ms << "ms" << endl;
+
+    // Weak queue
+    double dur_weak_ms = bench<MSQueue<int>, 10000000, 10000000, 100, N_THREADS>();
+    cout << "Duration for weak queue = " << dur_weak_ms << " ms" << endl;
 
     cout << "Benchmarking ended" << endl;
 }

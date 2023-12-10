@@ -6,8 +6,8 @@
  * Michael and Scott Non-Blocking queue implementation for a strong memory model.
  */
 
-#ifndef COMP_522_MS_QUEUE_STRONG_H
-#define COMP_522_MS_QUEUE_STRONG_H
+#ifndef COMP_522_MS_QUEUE_WEAK_H
+#define COMP_522_MS_QUEUE_WEAK_H
 
 #include "node.h"
 #include "pointer.h"
@@ -96,4 +96,4 @@ public:
         return true;
     }
 };
-#endif //COMP_522_MS_QUEUE_STRONG_H
+#endif //COMP_522_MS_QUEUE_WEAK_H

@@ -14,7 +14,7 @@
  */
 
 // sequential enqueue
-vector<int> enqueue_dequeue_n(MSQueue<int>& queue, int tid, int n_threads, int n, vector<int>& output) {
+vector<int> enqueue_dequeue_n(MSQueueStrong<int>& queue, int tid, int n_threads, int n, vector<int>& output) {
     // Enqueuing
     int n_elements = n / n_threads;
     int offset = n_elements * tid;
@@ -40,7 +40,7 @@ vector<int> enqueue_dequeue_n(MSQueue<int>& queue, int tid, int n_threads, int n
 // Enqueue and then dequeue 1M items
 void test_FIFO_par(int n_threads, int n) {
     cout << "### Begin Test: test_FIFO_1M ###" << endl;
-    MSQueue<int> queue;
+    MSQueueStrong<int> queue;
     // Invoke the threads
     vector<thread> threads;
     vector<vector<int>> res(n_threads, vector<int>());

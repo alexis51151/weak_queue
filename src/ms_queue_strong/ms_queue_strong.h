@@ -14,13 +14,13 @@
 #include <atomic>
 
 template<class T>
-class MSQueue {
+class MSQueueStrong {
 public:
     // Head and Tail must be accessed atomically
     atomic<Pointer<T>> head;
     atomic<Pointer<T>> tail;
 
-    MSQueue() {
+    MSQueueStrong() {
         // Create the initial node: fake node
         Node<T>* fake = new Node<T>();
         // This node has no successor
