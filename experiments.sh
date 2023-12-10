@@ -6,9 +6,14 @@ n_trials=5
 
 echo Detected "$n_cores" cores
 
+
 # 1. 10M operations, from 1 to n_cores
 n_iter=100
 n_enqueue_dequeue=10000000
+
+# Print header
+printf "#1: memory_model\tn_threads\tn_iter\tn\tdur_ms\ttot_dur_work_ms\n"
+
 for ((i = 1; i <= n_cores; i++))
 do
   # Do several trials

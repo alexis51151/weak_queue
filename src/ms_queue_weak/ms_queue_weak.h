@@ -24,8 +24,8 @@ public:
         // Create the initial node: fake node
         Node<T>* fake = new Node<T>();
         // This node has no successor
-        this->head.store(Pointer<T>(fake, 0), memory_order_release);
-        this->tail.store(Pointer<T>(fake, 0), memory_order_release);
+        this->head.store(Pointer<T>(fake, 0), memory_order_relaxed);
+        this->tail.store(Pointer<T>(fake, 0), memory_order_relaxed);
     }
 
     void enqueue(const T &value) {
@@ -49,14 +49,14 @@ public:
                 } else {
                     // Try to update the tail, and try again to insert later
                     // If it fails, someone else has updated the tail
-                    this->tail.compare_exchange_strong(cur_tail, Pointer<T>(next.ptr, cur_tail.count + 1),
-                            memory_order_release, memory_order_relaxed);
+                    this->tail.compare_exchange_weak(cur_tail, Pointer<T>(next.ptr, cur_tail.count + 1),
+                            memory_order_relaxed, memory_order_relaxed);
                 }
             }
         }
         // Try to update the tail
         // If it fails, someone else has updated the tail
-        this->tail.compare_exchange_strong(cur_tail, Pointer<T>(node, cur_tail.count + 1),
+        this->tail.compare_exchange_weak(cur_tail, Pointer<T>(node, cur_tail.count + 1),
                 memory_order_release, memory_order_relaxed);
     }
 
@@ -75,8 +75,8 @@ public:
                         return false;
                     }
                     // Tail is lagging behind
-                    this->tail.compare_exchange_strong(cur_tail, Pointer<T>(next.ptr, cur_tail.count + 1),
-                            memory_order_release, memory_order_relaxed);
+                    this->tail.compare_exchange_weak(cur_tail, Pointer<T>(next.ptr, cur_tail.count + 1),
+                            memory_order_relaxed, memory_order_relaxed);
                 } else {
                     // Queue is not empty
                     // Read value before CAS to prevent another dequeue from freeing the same node

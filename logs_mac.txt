@@ -2,6 +2,7 @@ Detected 10 cores
 n_threads = 1
 n_iter = 100
 number of enqueue/dequeue = 10000000
+#1: memory_model	n_threads	n_iter	n	dur_ms	tot_dur_work_ms
 work duration = 8.72 ns
 total work duration = 174.4 ms
 Benchmarking started

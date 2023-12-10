@@ -23,8 +23,8 @@ public:
         // Create the initial node: fake node
         Node* fake = new Node();
         // This node has no successor
-        this->head.store(fake, memory_order_release);
-        this->tail.store(fake, memory_order_release);
+        this->head.store(fake, memory_order_relaxed);
+        this->tail.store(fake, memory_order_relaxed);
     }
 
 
@@ -53,20 +53,19 @@ public:
                 } else {
                     // Try to update the tail, and try again to insert later
                     // If it fails, someone else has updated the tail
-                    this->tail.compare_exchange_strong(cur_tail, next, memory_order_release, memory_order_relaxed);
+                    this->tail.compare_exchange_weak(cur_tail, next, memory_order_relaxed, memory_order_relaxed);
                 }
             }
         }
         // Try to update the tail
         // If it fails, someone else has updated the tail
         // Release: last instruction, so we just do not want it to be reordered before another instruction
-        this->tail.compare_exchange_strong(cur_tail, node, memory_order_release, memory_order_relaxed);
+        this->tail.compare_exchange_weak(cur_tail, node, memory_order_release, memory_order_relaxed);
     }
 
     bool dequeue(uint32_t* value) {
-        Node* cur_head;
         while (true) {
-            cur_head = this->head.load(memory_order_acquire);
+            Node* cur_head = this->head.load(memory_order_acquire);
             Node* cur_tail = this->tail.load(memory_order_relaxed);
             Node* next = cur_head->next.load(memory_order_acquire);
             // Check if head, tail and next are consistent
@@ -78,7 +77,7 @@ public:
                         return false;
                     }
                     // Tail is lagging behind
-                    this->tail.compare_exchange_strong(cur_tail, next, memory_order_release, memory_order_relaxed);
+                    this->tail.compare_exchange_weak(cur_tail, next, memory_order_relaxed, memory_order_relaxed);
                 } else {
                     // Queue is not empty
                     // Read value before CAS to prevent another dequeue from freeing the same node
