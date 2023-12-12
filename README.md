@@ -60,18 +60,25 @@ We have model checked using CDSChecker:
 * C++ 11
 * CMake
 * CPU with weak memory ordering (ex: POWER9, Apple Silicon, ARM...)
+* R with ggplot2, tidyr, dplyr and readr packages (Optional: to run the benchmark)
+
 
 ### Compatibility
 The project was successfully compiled and tested on 
 - Intel CPU (i9-12900K) with Ubuntu 22.04
 - Apple Silicon (Apple M1 Pro) with macOS Monterey 12.6
+- POWER9 with Red Hat Entreprise 8.8 
 
 ### Apple Silicon 
 On Apple Silicon, linking against the `atomics` library leads to an error. 
 If you are compiling the code for an Apple Silicon CPU, you should remove the linkage
-to `atomics` in the Makefile to successfully compile.
+to `atomics` in the Makefiles and CmakeLists to successfully compile.
 
-<!-- USAGE EXAMPLES -->
+## Benchmarking 
+To run the benchmark, you can execute the `bench.sh` script.
+It will generate a bench.pdf plot and print the average speedup.
+
+
 ## Testing
 
 ### Strong Michael & Scott Queue
